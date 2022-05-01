@@ -7,38 +7,44 @@ int main(){
 	
 	int choix=0;
 	int debug=-1;
-	
-	fpread = fopen("reltel.txt", "r");
-	if(fpread==NULL){
-		printf("pas de fichirs txt\n");
-	}
 		
 	
 	while(choix!=4){
+		
+		fpread = fopen("reltel.txt", "r");
+		if(fpread==NULL){
+			printf("pas de fichirs txt\n");
+		}
 		
 		int choix=0;
 		int debug=-1;
 
 		//remplis le tableau depuis le fichier txt
 		
+		// printf("HAHAHAHAHAHAHAAHHAAHAHAHAHAHAHAHA\n");
 		fillIn(fpread, tableau);		//gets datas from given txt file
+		// printArray(tableau, 1000);
 		
 		printf("-----------------------\n");
 		printf("Bienvenu sur la plateforme de tri.\n");
 		printf("Le fichier .txt est deja load.\n\n");
 		printf("Quel algorithme vouez vous utiliser :\n");
 		printf("1) Bubble sort\n2) Insertion sort\n3) Display unsorted list\n4) Quit\n");
+		
 		do{
 		printf("\n--->");
 		fflush(stdin);
 		scanf("%d", &choix);
 		}while(!(choix==1 || choix==2 || choix ==3 || choix ==4));
+		
 		if(choix==4){
 			printf("A bientot !\n");
 			fclose(fpread);
 			return 0;
 		}
+		
 		printf("-----------------------\n");
+		
 		if(choix==3){
 			printArray(tableau, 1000);
 		}
