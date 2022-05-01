@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <time.h>
 
 ///////////////////////////////////
 ///////////////////////////////////
@@ -16,8 +17,8 @@
 typedef struct element{
 	char full[80];			//ligne entière
 	long long pn;			//num de tel
-	// char name[100];			//nom/prénom de la personne
-	// bool inout;				//appel in (0) ou out (1)
+	// char name[100];		//nom/prénom de la personne
+	// bool inout;			//appel in (0) ou out (1)
 }t_el;
 
 ///////////////////////////////////
