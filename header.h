@@ -24,6 +24,13 @@ typedef struct element{
 ///////////////////////////////////
 
 void fillIn(FILE* fpread, t_el tableau[]);
+void swap(t_el* xp, t_el* yp);
+void printArray(t_el arr[], int size);
+
+
+void bubbleSort(t_el arr[], int n);
+void insertionSort(t_el arr[], int n);
+
 
 
 

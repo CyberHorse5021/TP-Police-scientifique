@@ -1,5 +1,8 @@
 #include "header.h"
 
+///////////////////////////////////
+///////////////////////////////////
+
 void fillIn(FILE* fpread, t_el* tableau){
 	
 	char *endPtr;
@@ -31,3 +34,69 @@ void fillIn(FILE* fpread, t_el* tableau){
 		// printf("%ld\n", tableau[k].pn);
 	// }
 }
+
+///////////////////////////////////
+///////////////////////////////////
+
+//from geeksforgeeks.org
+void swap(t_el* xp, t_el* yp){
+    t_el temp = *xp;
+    *xp = *yp;
+    *yp = temp;
+}
+
+
+///////////////////////////////////
+///////////////////////////////////
+
+
+// A function to implement bubble sort
+void bubbleSort(t_el arr[], int n){
+    int i, j;
+    for (i = 0; i < n - 1; i++){
+ 
+        // Last i elements are already in place
+        for (j = 0; j < n - i - 1; j++){
+            if (arr[j].pn > arr[j + 1].pn){
+                swap(&arr[j], &arr[j + 1]);
+			}
+		}
+	}
+}
+
+///////////////////////////////////
+///////////////////////////////////
+
+void printArray(t_el arr[], int size){
+    int i;
+    for (i = 0; i < size; i++){
+        printf("%d : %s \n", i, arr[i].full);
+	}	
+}
+
+///////////////////////////////////
+///////////////////////////////////
+
+void insertionSort(t_el arr[], int n){
+	
+	t_el key;
+    int i, j;
+	
+    for (i = 1; i < n; i++) {
+        key = arr[i];
+        j = i - 1;
+ 
+        /* Move elements of arr[0..i-1], that are
+          greater than key, to one position ahead
+          of their current position */
+        while (j >= 0 && arr[j].pn > key.pn) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+///////////////////////////////////
+///////////////////////////////////
+

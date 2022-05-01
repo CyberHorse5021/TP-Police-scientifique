@@ -10,8 +10,14 @@ int main(){
 		printf("pas de fichirs txt\n");
 	}
 	
-	
 	fillIn(fpread, tableau);		//gets datas from given txt file
+	
+	
+	printArray(tableau, 1000);
+	printf("---------------------NEXT----------------------\n");
+	bubbleSort(tableau, 1000);
+	// insertionSort(tableau, 1000);
+	printArray(tableau, 1000);
 	
 	return 0;
 }
