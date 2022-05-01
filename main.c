@@ -16,14 +16,11 @@ int main(){
 			printf("pas de fichirs txt\n");
 		}
 		
-		int choix=0;
-		int debug=-1;
+		choix=0;
+		debug=-1;
 
 		//remplis le tableau depuis le fichier txt
-		
-		// printf("HAHAHAHAHAHAHAAHHAAHAHAHAHAHAHAHA\n");
 		fillIn(fpread, tableau);		//gets datas from given txt file
-		// printArray(tableau, 1000);
 		
 		printf("-----------------------\n");
 		printf("Bienvenu sur la plateforme de tri.\n");
@@ -49,25 +46,25 @@ int main(){
 			printArray(tableau, 1000);
 		}
 		else{
-		printf("\n\n Voulez vous voir le debug (0/1) :\n");
-		do{
-			printf("\n--->");
-			fflush(stdin);
-			scanf("%d", &debug);
-		}while(!(debug==0 || debug==1));
-		
-		if(choix==1){
-			bubbleSort(tableau, 1000);
-			if(debug==1){
-				printArray(tableau, 1000);
+			printf("\n\n Voulez vous voir la liste sorted (0/1) :\n");
+			do{
+				printf("\n--->");
+				fflush(stdin);
+				scanf("%d", &debug);
+			}while(!(debug==0 || debug==1));
+			
+			if(choix==1){
+				bubbleSort(tableau, 1000);
+				if(debug==1){
+					printArray(tableau, 1000);
+				}
 			}
-		}
-		if(choix==2){
-			insertionSort(tableau, 1000);
-			if(debug==1){
-				printArray(tableau, 1000);
+			if(choix==2){
+				insertionSort(tableau, 1000);
+				if(debug==1){
+					printArray(tableau, 1000);
+				}
 			}
-		}
 		}
 	}
 	

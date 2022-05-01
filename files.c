@@ -54,7 +54,8 @@ void swap(t_el* xp, t_el* yp){
 void bubbleSort(t_el arr[], int n){
 	
     int i, j;
-	clock_t begin = clock();
+	clock_t begin, end;
+	begin = clock();
     for (i = 0; i < n - 1; i++){
         // Last i elements are already in place
         for (j = 0; j < n - i - 1; j++){
@@ -63,7 +64,7 @@ void bubbleSort(t_el arr[], int n){
 			}
 		}
 	}
-	clock_t end = clock();
+	end = clock();
 	double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 	printf("\n---------------------\nTri bulle fini.\n\n");
 	printf("-->Temps tri : %f secondes\n---------------------\n\n", time_spent); 
@@ -85,8 +86,9 @@ void printArray(t_el arr[], int size){
 void insertionSort(t_el arr[], int n){
 	t_el key;
     int i, j;	
-	clock_t begin = clock();
+	clock_t begin, end;
 	
+	begin = clock();
     for (i = 1; i < n; i++) {
         key = arr[i];
         j = i - 1;
@@ -100,7 +102,8 @@ void insertionSort(t_el arr[], int n){
         }
         arr[j + 1] = key;
     }
-	clock_t end = clock();
+	end = clock();
+	
 	double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 	printf("\n---------------------\nTri insertion fini.\n\n");
 	printf("-->Temps tri : %f secondes\n---------------------\n\n", time_spent); 
