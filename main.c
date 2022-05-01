@@ -22,14 +22,13 @@ int main(){
 		//remplis le tableau depuis le fichier txt
 		fillIn(fpread, tableau);		//gets datas from given txt file
 		
-		printf("-----------------------\n");
-		printf("Bienvenu sur la plateforme de tri.\n");
+		printf("\nBienvenu sur la plateforme de tri.\n");
 		printf("Le fichier .txt est deja load.\n\n");
 		printf("Quel algorithme vouez vous utiliser :\n");
 		printf("1) Bubble sort\n2) Insertion sort\n3) Display unsorted list\n4) Quit\n");
 		
 		do{
-		printf("\n--->");
+		printf("\n  --> ");
 		fflush(stdin);
 		scanf("%d", &choix);
 		}while(!(choix==1 || choix==2 || choix ==3 || choix ==4));
@@ -40,15 +39,16 @@ int main(){
 			return 0;
 		}
 		
-		printf("-----------------------\n");
+		// printf("-----------------------\n");
 		
 		if(choix==3){
 			printArray(tableau, 1000);
 		}
 		else{
-			printf("\n\n Voulez vous voir la liste sorted (0/1) :\n");
+			printf("\n  Voulez vous voir la sorted list (0/1) :\n");
+			printf("  (le temps d'execution s'affiche avant l'affichage de la liste)\n");
 			do{
-				printf("\n--->");
+				printf("\n  --> ");
 				fflush(stdin);
 				scanf("%d", &debug);
 			}while(!(debug==0 || debug==1));
@@ -66,6 +66,8 @@ int main(){
 				}
 			}
 		}
+				printf("\n\n------------------------------------------------\n");
+				printf("------------------------------------------------\n\n");
 	}
 	
 	fclose(fpread);
