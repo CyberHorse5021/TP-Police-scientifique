@@ -1,13 +1,4 @@
 #include "header.h"
-///////////////////////////////////
-///////////////////////////////////
-
-void printArray(t_el arr[], int size){
-    int i;
-    for (i = 0; i < size; i++){
-        printf("%d : %s \n", i, arr[i].full);
-	}	
-}
 
 ///////////////////////////////////
 ///////////////////////////////////
@@ -76,6 +67,16 @@ void bubbleSort(t_el arr[], int n){
 	double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 	printf("\n---------------------\nTri bulle fini.\n\n");
 	printf("-->Temps tri : %f secondes\n---------------------\n\n", time_spent); 
+}
+
+///////////////////////////////////
+///////////////////////////////////
+
+void printArray(t_el arr[], int size){
+    int i;
+    for (i = 0; i < size; i++){
+        printf("%d : %s \n", i, arr[i].full);
+	}	
 }
 
 ///////////////////////////////////
