@@ -4,26 +4,28 @@ int main(){
 	
 	FILE* fpread = NULL;
 	t_el tableau[1000];
+	t_reg* myRegistre = NULL;
 	
 	int choix=0;
 	int debug=-1;
-		
 	
-	while(choix!=4){
-		
-		fpread = fopen("reltel.txt", "r");
-		if(fpread==NULL){
-			printf("pas de fichirs txt\n");
-		}
+	fpread = fopen("reltel.txt", "r");
+	if(fpread==NULL){
+		printf("pas de fichirs txt\n");
+	}
+	
+	//remplis le tableau depuis le fichier txt
+	fillIn(fpread, tableau);		//gets datas from given txt file
 		
 		choix=0;
 		debug=-1;
-
-		//remplis le tableau depuis le fichier txt
-		fillIn(fpread, tableau);		//gets datas from given txt file
+		
+		printf("\n\n------------------------------------------------\n");
+		printf("------------------------------------------------\n\n");
 		
 		printf("\nBienvenu sur la plateforme de tri.\n");
 		printf("Le fichier .txt est deja load.\n\n");
+		printf("Pour des raisons de chargement de fichiers, veuillez restart le programme si vous souhaitez essayer plusieurs tris/options.\n\n");
 		printf("Quel algorithme vouez vous utiliser :\n");
 		printf("1) Bubble sort\n2) Insertion sort\n3) Display unsorted list\n4) Quit\n");
 		
@@ -39,10 +41,11 @@ int main(){
 			return 0;
 		}
 		
-		// printf("-----------------------\n");
+		
 		
 		if(choix==3){
 			printArray(tableau, 1000);
+			return 0;
 		}
 		else{
 			printf("\n  Voulez vous voir la sorted list (0/1) :\n");
@@ -66,9 +69,17 @@ int main(){
 				}
 			}
 		}
-				printf("\n\n------------------------------------------------\n");
-				printf("------------------------------------------------\n\n");
-	}
+		
+	printf("\n\n------------------------------------------------\n");
+	printf("------------------------------------------------\n\n");
+
+	printf("Chaptire 2 :\n");
+	printf("Creating a contact list...\n\n");
+	
+	//implémenter la mise en registre 
+	myRegistre = registre(tableau, 1000);
+	// displayRegister(myRegistre);
+	
 	
 	fclose(fpread);
 	return 0;
