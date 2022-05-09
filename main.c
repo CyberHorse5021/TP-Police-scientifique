@@ -9,9 +9,10 @@ int main(){
 	int choix=0;
 	int debug=-1;
 	
-	fpread = fopen("reltel.txt", "r");
+	fpread = fopen("reltex.txt", "r");
 	if(fpread==NULL){
 		printf("pas de fichirs txt\n");
+		return 0;
 	}
 	
 	//remplis le tableau depuis le fichier txt
@@ -23,9 +24,9 @@ int main(){
 		printf("\n\n------------------------------------------------\n");
 		printf("------------------------------------------------\n\n");
 		
-		printf("\nBienvenu sur la plateforme de tri.\n");
+		printf("\nBienvenue sur la plateforme de tri.\n");
 		printf("Le fichier .txt est deja load.\n\n");
-		printf("Pour des raisons de chargement de fichiers, veuillez restart le programme si vous souhaitez essayer plusieurs tris/options.\n\n");
+		printf("Pour des raisons de chargement de fichiers, veuillez restart le programme a chaques tris/options.\n\n");
 		printf("Quel algorithme vouez vous utiliser :\n");
 		printf("1) Bubble sort\n2) Insertion sort\n3) Display unsorted list\n4) Quit\n");
 		
@@ -76,11 +77,18 @@ int main(){
 	printf("Chaptire 2 :\n");
 	printf("Creating a contact list...\n\n");
 	
+	
 	//implémenter la mise en registre 
 	myRegistre = registre(tableau, 1000);
-	// displayRegister(myRegistre);
 	
 	
+	//stops because of 15th element
+	displayRegister(myRegistre);
+	
+
+	printf("fin");
 	fclose(fpread);
+	free(myRegistre);
+	
 	return 0;
 }

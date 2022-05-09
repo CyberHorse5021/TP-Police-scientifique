@@ -119,9 +119,10 @@ t_reg* registre(t_el tableau[], int size){
 	int returned;
 	
 	
-	printf("debug\n");	
 	t_reg* monregistre = NULL;
-	monregistre = (t_reg*) malloc(sizeof(t_reg)*1);
+	monregistre = (t_reg*) malloc(sizeof(t_reg));
+	monregistre->tab=NULL;
+	
 	
 	t_contact* contactList = NULL;
 	contactList = (t_contact*)malloc(sizeof(t_contact));
@@ -165,35 +166,60 @@ t_reg* registre(t_el tableau[], int size){
 	}
 	
 	
-	// POUR DEBUG SUPPRIMER APRES
+	
+	// UNCOMMENT FOR DEBUG
+	
 	printf("------------------------------------------------\n");
 	printf("------------------------------------------------\n");
 	for(int j=0;j<nbOfContact;++j){
 		printf("%d | All infos : %s",j, contactList[j].cfull);
-		printf("%d | numero : +33%ld\n",j, contactList[j].cpn);
-		printf("%d | nbappels : %d\n",j,contactList[j].allcalls);
-		printf("%d | appels IN : %d\n", j,contactList[j].cin);
-		printf("%d | appels OUT : %d\n", j,contactList[j].cout);
+		printf("%d | Numero : +33%lli\n",j, contactList[j].cpn);
+		printf("%d | Appels totals : %d\n",j,contactList[j].allcalls);
+		printf("%d | Appel entrants : %d\n", j,contactList[j].cin);
+		printf("%d | Appels sortants : %d\n", j,contactList[j].cout);
 		printf("\n\n");
 	}
 	printf("------------------------------------------------\n");
 	printf("------------------------------------------------\n");
 	
-	
-	
-	//fonction pour récuper prenom nom uniquement
-	//on met tout dans la structure registre (a doublecheck)
-	monregistre->tab = (t_contact*) malloc(sizeof(t_contact)*nbOfContact);
-	monregistre->tab = contactList;
+
+	///////////////////////////////
+	///////////////////////////////
+
+
+
+	//on met tout dans la structure registre
 	monregistre->contactNb = nbOfContact;
-	printf("debug\n");
+	printf("111111111111111\n");
+	fillRegister(contactList, monregistre);
+	printf("111111111111111\n");
+	free(contactList);
+	
+	
+	
+	
+	//vérification tempo
+	printf("nb of contact : %d\n\n", monregistre->contactNb);
+	for(int n=0;n<monregistre->contactNb;++n){
+		printf("%d | All infos : %s",n, monregistre->tab[n].cfull);
+		printf("%d | Numero : +33%lli\n",n, monregistre->tab[n].cpn);
+		printf("%d | Appels totals : %d\n",n,monregistre->tab[n].allcalls);
+		printf("%d | Appel entrants : %d\n", n,monregistre->tab[n].cin);
+		printf("%d | Appels sortants : %d\n", n,monregistre->tab[n].cout);
+		printf("\n\n");
+	}
+	
+	//on return le registre d'appels
+	
 	return monregistre;
 }
+
 
 ///////////////////////////////////
 ///////////////////////////////////	
 	
-int ifIn(int a, t_contact* tab, int i){
+	
+int ifIn(long long a, t_contact* tab, int i){
 	for(int j=0;j<i;++j){
 		if(a == tab[j].cpn){
 			return j;
@@ -235,17 +261,104 @@ int inOut(char chaine[]){
 
 void displayRegister(t_reg* registre){
 	
+	//on isole les prenoms
+	resizeName(registre);
+	
+	
 	for(int i=0;i<registre->contactNb;++i){
 		printf("--------------------------\n\n");
 		printf("Name : %s", registre->tab[i].cfull);
-		printf("Phone number : +33%ld\n", registre->tab[i].cpn);
-		printf("All calls : %d\n",registre->tab[i].allcalls);
-		printf("Inbound calls : %d\n",registre->tab[i].cin);
-		printf("Outbounds calls : %d\n\n",registre->tab[i].cout);
+		// printf("Phone number : +33%lli\n", registre->tab[i].cpn);
+		// printf("All calls : %d\n",registre->tab[i].allcalls);
+		// printf("Inbound calls : %d\n",registre->tab[i].cin);
+		// printf("Outbounds calls : %d\n\n",registre->tab[i].cout);
 	}		
 	printf("--------------------------\n");
+	
+	
 	
 }
 
 ///////////////////////////////////
 ///////////////////////////////////
+
+//fonction pour récuper prenom nom uniquement
+void resizeName(t_reg *reg){
+	
+	char tempo[80];
+	char* curs;
+	int indice1=0, indice2=0, compteSpace=0, lengh;
+	
+	printf("size : %d\n\n", reg->contactNb);
+	
+	
+	//debug purpose
+	for(int k =0;k<reg->contactNb;++k){
+		printf("CHAINE  : %s\n", reg->tab[k].cfull);
+	}
+
+	for(int j=0;j<reg->contactNb;++j){
+		
+		printf("nb %d\n", j);
+		curs = reg->tab[j].cfull;
+		
+		while(compteSpace!=2){
+		if(*curs==' '){
+			compteSpace++;
+		}
+		curs++;
+		indice1++;
+		}	
+	
+		curs = reg->tab[j].cfull;
+		compteSpace=0;
+		
+		while(compteSpace!=4){
+			if(*curs==' '){
+				compteSpace++;
+			}
+			curs++;
+			indice2++;
+		}
+		
+		lengh = indice2-indice1;
+		
+		// strncpy(reg->tab[j].cfull, &reg->tab[j].cfull[indice1], lengh);
+		strncpy(tempo, &reg->tab[j].cfull[indice1], lengh);
+		memset(reg->tab[j].cfull,0,sizeof(reg->tab[j].cfull));
+		strcpy(reg->tab[j].cfull, tempo);
+		memset(tempo,0,sizeof(tempo));
+		
+		// reg->tab[j].cfull[indice2-1]='\0';
+		// strcpy(reg->tab[j].cfull, reg->tab[j].cfull);
+		
+		printf("resultat : %s\n", reg->tab[j].cfull);
+		
+		indice1 = 0;
+		indice2 = 0;
+		compteSpace=0;
+	}
+	
+}
+
+
+///////////////////////////////////
+///////////////////////////////////
+
+
+void fillRegister(t_contact* tableau,t_reg* monregistre){
+	
+	monregistre->tab = (t_contact*)malloc(sizeof(t_contact)*monregistre->contactNb);
+	
+	for(int i=0;i<monregistre->contactNb;++i){
+		printf("%d\n", i);
+		monregistre->tab[i].cpn = tableau[i].cpn;
+		monregistre->tab[i].cin = tableau[i].cin;
+		monregistre->tab[i].cout = tableau[i].cout;
+		monregistre->tab[i].allcalls = tableau[i].allcalls;
+		strcpy(monregistre->tab[i].cfull, tableau[i].cfull);
+	}
+	//on transfere les données dans le tableau du registre
+
+	
+}

@@ -21,8 +21,6 @@
 typedef struct element{
 	char full[80];			//ligne entière
 	long long pn;			//num de tel
-	// char name[100];		//nom/prénom de la personne
-	// bool inout;			//appel in (0) ou out (1)
 }t_el;
 
 typedef struct contact{
@@ -45,16 +43,17 @@ void fillIn(FILE* fpread, t_el tableau[]);
 void swap(t_el* xp, t_el* yp);
 void printArray(t_el arr[], int size);
 
-
 void bubbleSort(t_el arr[], int n);
 void insertionSort(t_el arr[], int n);
 
 t_reg* registre(t_el tableau[], int size);
-int ifIn(int a, t_contact* tab, int i);
+int ifIn(long long a, t_contact* tab, int i);
 int inOut(char chaine[]);
 void displayRegister(t_reg* registre);
+void resizeName(t_reg *reg);
+void fillRegister(t_contact* tableau,t_reg* monregistre);
 
 ///////////////////////////////////
 ///////////////////////////////////
 
-#endif // HEADER_H_INCLUDED
+#endif // HEADER_H_
