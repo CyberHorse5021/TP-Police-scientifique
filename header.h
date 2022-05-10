@@ -36,22 +36,46 @@ typedef struct reg{
 	int contactNb;
 }t_reg;
 
+
+//////////////////
+
+typedef struct entite{
+	int nombre;
+	int occurence;
+}t_entite;
+
+
+typedef struct regchap3{
+	t_entite *histo;
+	int nbtotal;
+}t_reg3;
+
+
 ///////////////////////////////////
 ///////////////////////////////////
 
 void fillIn(FILE* fpread, t_el tableau[]);
 void swap(t_el* xp, t_el* yp);
 void printArray(t_el arr[], int size);
-
 void bubbleSort(t_el arr[], int n);
 void insertionSort(t_el arr[], int n);
 
-t_reg* registre(t_el tableau[], int size);
+
+
+t_reg* registre(t_el tableau[], int size, t_reg* reg);
 int ifIn(long long a, t_contact* tab, int i);
 int inOut(char chaine[]);
 void displayRegister(t_reg* registre);
 void resizeName(t_reg *reg);
 void fillRegister(t_contact* tableau,t_reg* monregistre);
+void showHarceleur(t_reg* monRegistre);
+
+
+
+void chapitre3();
+int isInInt(int nb, t_entite* tab, int tabsize);
+void fillRegister3(t_entite* tableau, t_reg3* registre);
+void showRegister3(t_reg3* registre);
 
 ///////////////////////////////////
 ///////////////////////////////////

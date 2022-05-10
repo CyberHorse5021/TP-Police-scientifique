@@ -2,18 +2,23 @@
 
 int main(){
 	
+	srand(time(NULL));
+	
 	FILE* fpread = NULL;
 	t_el tableau[1000];
-	t_reg* myRegistre = NULL;
+	t_reg *myRegistre=NULL;
 	
 	int choix=0;
 	int debug=-1;
 	
-	fpread = fopen("reltex.txt", "r");
+	
+	fpread = fopen("C:\\jeanjaque\\reltex.txt", "r");
 	if(fpread==NULL){
 		printf("pas de fichirs txt\n");
 		return 0;
 	}
+	
+	
 	
 	//remplis le tableau depuis le fichier txt
 	fillIn(fpread, tableau);		//gets datas from given txt file
@@ -77,18 +82,37 @@ int main(){
 	printf("Chaptire 2 :\n");
 	printf("Creating a contact list...\n\n");
 	
-	
+
 	//implémenter la mise en registre 
-	myRegistre = registre(tableau, 1000);
-	
-	
-	//stops because of 15th element
+	myRegistre = registre(tableau, 1000, myRegistre);
+    printf("your contact list is ready !\n\n");
+
+    //on affiche le registre
 	displayRegister(myRegistre);
 	
+	printf("\n\n------------------------------------------------\n");
+	printf("------------------------------------------------\n\n");
 
-	printf("fin");
+	//affichage du harceleur
+	showHarceleur(myRegistre);
+	
+	
+	printf("\n\n------------------------------------------------------\n");
+	printf("------------------------------------------------------\n\n");
+
+
+
+
+	printf("Chaptire 3 :\n");
+	printf("Generateur d'entiers.\n\n");
+	
+	
+	//chapitre3();
+	
 	fclose(fpread);
 	free(myRegistre);
 	
+	
+	printf("fin de l'execution");
 	return 0;
 }
