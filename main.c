@@ -23,7 +23,7 @@ int main(){
 	int debug=-1;
 	
 	
-	fpread = fopen("C:\\jeanjaque\\reltex.txt", "r");
+	fpread = fopen("reltex.txt", "r");
 	if(fpread==NULL){
 		printf("pas de fichirs txt\n");
 		return 0;
@@ -117,9 +117,9 @@ int main(){
 	
 	
 	printf("\n\nChapitre 3 : Etude de complexite\n\n");
-	
 	chapitre3(monRegistre, histo);
-	
+	printf("\n\n---------------------------------------------------------------------------------------\n");
+	printf("---------------------------------------------------------------------------------------\n\n");
 	
 	
 	free(myRegistre);

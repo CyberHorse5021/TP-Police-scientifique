@@ -46,7 +46,7 @@ void swap(t_el* xp, t_el* yp){
 void bubbleSort(t_el arr[], int n){
 	
     int i, j;
-	DWORD begin = GetTickCount();
+	clock_t begin = clock();
     for (i = 0; i < n - 1; i++){
         // Last i elements are already in place
         for (j = 0; j < n - i - 1; j++){
@@ -55,9 +55,9 @@ void bubbleSort(t_el arr[], int n){
 			}
 		}
 	}
-	DWORD end = GetTickCount();
+	clock_t end = clock();
 	printf("\n-------------------------------\nTri bulle fini.\n\n");
-	printf("-->Temps tri : %lu millisecondes\n-------------------------------\n\n", end-begin ); 
+	printf("-->Temps tri : %ld millisecondes\n-------------------------------\n\n", (end-begin)*1000/CLOCKS_PER_SEC ); 
 }
 
 ///////////////////////////////////
@@ -77,7 +77,7 @@ void insertionSort(t_el arr[], int n){
 	t_el key;
     int i, j;	
 	
-	DWORD begin = GetTickCount();
+	clock_t begin = clock();
     for (i = 1; i < n; i++) {
         key = arr[i];
         j = i - 1;
@@ -91,10 +91,10 @@ void insertionSort(t_el arr[], int n){
         }
         arr[j + 1] = key;
     }
-	DWORD end = GetTickCount();
+	clock_t end = clock();
 
 	printf("\n-------------------------------\nTri insertion fini.\n\n");
-	printf("-->Temps tri : %lu millisecondes\n-------------------------------\n\n", end-begin); 
+	printf("-->Temps tri : %ld millisecondes\n-------------------------------\n\n", (end-begin)*1000/CLOCKS_PER_SEC);
 }
 
 ///////////////////////////////////
@@ -128,15 +128,15 @@ void shuffle(t_el *a, int n)
 void bogosort(t_el *a, int n){
 	
 	int try = 0;
-	DWORD begin = GetTickCount();
+	clock_t begin = clock();
 	while ( !is_sorted(a, n) ){
 		shuffle(a, n);
 		printf("Try : %d\n", try);
 		++try;
 	}
-	DWORD end = GetTickCount();
+	clock_t end = clock();
 	printf("\n-------------------------------\nTri stupide fini.\n\n");
-	printf("-->Temps tri : %lu secondes\n-------------------------------\n\n", end-begin); 
+	printf("-->Temps tri : %lu secondes\n-------------------------------\n\n", (end-begin)*1000/CLOCKS_PER_SEC); 
 }
 
 ///////////////////////////////////

@@ -12,7 +12,7 @@ t_reg* registre(t_el tableau[], int size, t_reg* reg){
 	t_contact* contactList = NULL;
 	contactList = (t_contact*)malloc(sizeof(t_contact));
 
-	DWORD begin = GetTickCount();
+	clock_t begin = clock();
 	for(int i=0;i<size;++i){
 		// printf("%d|", i);
 		//on vérifie si si le numero est deja dans la liste de contactes
@@ -49,9 +49,9 @@ t_reg* registre(t_el tableau[], int size, t_reg* reg){
 			}
 		}
 	}
-	DWORD end = GetTickCount();
+	clock_t end = clock();
 	
-	printf("Temps de creation de l'histograame : %lu %lu %lu millisecondees.\n\n", begin, end, end-begin);
+	printf("Temps de creation de l'histogramme : %ld millisecondees.\n\n", (end-begin)*1000/CLOCKS_PER_SEC);
 	//on met tout dans la structure registre
 	reg->contactNb = nbOfContact;
 	fillRegister(contactList, reg);
